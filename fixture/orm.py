@@ -25,7 +25,7 @@ class ORM_fixture:
                            name=projec.name,
                            status=Status(projec.status),
                            inhert=bool(projec.inherit_global),
-                           view_status=Status(projec.view_status),
+                           view_status=View_status(projec.view_status),
                            description=projec.description)
 
         return list(map(convert,projects))

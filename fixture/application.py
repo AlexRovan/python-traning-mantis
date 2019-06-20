@@ -4,6 +4,8 @@ from fixture.project import ProjectHelper
 from fixture.james import JamesHelper
 from fixture.signup import SignUpHelper
 from fixture.mail import EmailHelper
+from fixture.soap import SoapHelper
+
 
 class Application:
 
@@ -25,6 +27,7 @@ class Application:
         self.james = JamesHelper(self)
         self.signup = SignUpHelper(self)
         self.mail = EmailHelper(self)
+        self.soap = SoapHelper(self)
 
     def is_valid(self):
         try:
