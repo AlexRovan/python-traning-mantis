@@ -1,10 +1,13 @@
 from selenium import webdriver
 from fixture.session import SessionHelper
 from fixture.project import ProjectHelper
+from fixture.james import JamesHelper
+from fixture.signup import SignUpHelper
+from fixture.mail import EmailHelper
 
 class Application:
 
-    def __init__(self, browser, base_url):
+    def __init__(self, browser, config):
 
         if browser == "firefox":
             self.wd = webdriver.Firefox()
@@ -15,10 +18,13 @@ class Application:
         else:
             raise ValueError("Undefined name browsre - %s" % browser)
 
-        self.base_url = base_url
+        self.config = config
+        self.base_url = config["web"]["baseUrl"]
         self.session = SessionHelper(self)
         self.project = ProjectHelper(self)
-
+        self.james = JamesHelper(self)
+        self.signup = SignUpHelper(self)
+        self.mail = EmailHelper(self)
 
     def is_valid(self):
         try:
